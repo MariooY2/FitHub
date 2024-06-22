@@ -1,6 +1,7 @@
 # Welcome to FitHub! 🚀
 
 FitHub is a comprehensive personal training platform built with Next.js, Supabase, and Tailwind CSS, designed to help you achieve your fitness goals with ease and efficiency. Whether you're aiming for weight loss, muscle gain, or improved endurance, FitHub has got you covered.
+LiveDemo:
 <br>
 
 ## Features
@@ -22,4 +23,3 @@ FitHub is a comprehensive personal training platform built with Next.js, Supabas
 ### 📱 Mobile Friendly
 - Responsive Design: Enjoy a seamless experience on both desktop and mobile devices.
 <br>
-## Live Demo:
