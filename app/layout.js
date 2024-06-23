@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "FitHub",
   description:
-    "FitHub is a comprehensive personal training platform built with Next.js, designed to help you achieve your fitness goals with ease and efficiency. Whether you're aiming for weight loss, muscle gain, or improved endurance, FitHub has got you covered.",
+    "Your Personalized Fitness Companion.",
 };
 
 export default function RootLayout({ children }) {
