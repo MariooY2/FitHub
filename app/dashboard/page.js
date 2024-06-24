@@ -1,4 +1,17 @@
-function page() {
+import { getTotalRows, getUserDataByEmail } from "../_Backend/Actions";
+import { getTotalRowsForEmail,getTotalCaloriesForEmail } from "../_Backend/Activities";
+import { auth } from "../_lib/auth";
+
+//export const revalidate=0;
+
+async function page() {
+  const session = await auth();
+  const email = session.user.email;
+  const TotalUsers = await getTotalRows();
+  const userData = await getUserDataByEmail(email);
+  const TotalWorkouts=await getTotalRowsForEmail(email)
+  const TotalCalories=await getTotalCaloriesForEmail(email)
+  
   return (
     <>
       <div className="h-screen bg-gray-100">
@@ -20,7 +33,7 @@ function page() {
                       Total Workouts
                     </dt>
                     <dd className="mt-1 text-3xl font-semibold text-gray-900">
-                      76
+                      {TotalWorkouts}
                     </dd>
                   </div>
                 </div>
@@ -30,17 +43,17 @@ function page() {
                       Calories Burned
                     </dt>
                     <dd className="mt-1 text-3xl font-semibold text-gray-900">
-                      8,400
+                      {TotalCalories}
                     </dd>
                   </div>
                 </div>
                 <div className="bg-white overflow-hidden shadow rounded-lg">
                   <div className="px-4 py-5 sm:p-6">
                     <dt className="text-sm font-medium text-gray-500 truncate">
-                      Active Users
+                      Total Users
                     </dt>
                     <dd className="mt-1 text-3xl font-semibold text-gray-900">
-                      412
+                      {TotalUsers}
                     </dd>
                   </div>
                 </div>

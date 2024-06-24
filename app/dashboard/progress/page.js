@@ -1,10 +1,17 @@
-function page() {
+import { getActivitiesForEmail } from "@/app/_Backend/Activities";
+import { auth } from "@/app/_lib/auth";
+
+
+async function page() {
+    const session = await auth();
+    const activities= await getActivitiesForEmail(session.user.email)
+    console.log(activities)
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold text-center text-gray-800 mb-10">
         Your Progress Dashboard
       </h1>
-
+        
       {/* Progress Overview */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Fitness Progress */}
@@ -48,7 +55,7 @@ function page() {
           <canvas id="nutritionChart"></canvas>{" "}
           {/* Placeholder for a dynamic chart */}
         </div>
-
+       
         {/* Overall Health */}
         <div className="bg-white p-6 shadow rounded-lg">
           <h2 className="text-xl font-bold text-gray-900">Overall Health</h2>
@@ -80,13 +87,17 @@ function page() {
               </tr>
             </thead>
             <tbody>
-              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <td className="py-4 px-6">2021-09-01</td>
-                <td className="py-4 px-6">Morning Run</td>
-                <td className="py-4 px-6">30 min</td>
-                <td className="py-4 px-6">300 kcal</td>
-              </tr>
-              {/* More rows can be dynamically inserted here */}
+            {activities.map((activity, index) => (
+                      <tr
+                        key={index}
+                        className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                      >
+                        <td className="py-4 px-6">{new Date(activity.created_at).toISOString().slice(0, 10)}</td>
+                        <td className="py-4 px-6">{activity.Activity}</td>
+                        <td className="py-4 px-6">{activity.Duration} min</td>
+                        <td className="py-4 px-6">{activity.CaloriesBurned} kcal</td>
+                      </tr>
+                    ))}
               
             </tbody>
           </table>
