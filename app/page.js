@@ -4,7 +4,7 @@ import { auth } from "./_lib/auth";
 export default async function HomePage() {
   const session = await auth();
   const name = session?.user?.name;
-  const image = session?.user?.image;
+ 
   return (
     <>
       <div className="h-screen bg-gray-50">
@@ -14,13 +14,7 @@ export default async function HomePage() {
             <nav className="flex gap-8 justify-between">
               {session?.user ? (
                 <>
-                  <Image
-                    src={image}
-                    alt={name}
-                    width={35}
-                    height={35}
-                    className="rounded-full"
-                  />
+                 
                   <Link href="dashboard">Dashboard</Link>
                 </>
               ) : (
