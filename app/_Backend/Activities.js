@@ -77,3 +77,21 @@ export async function getTotalCaloriesForEmail(email) {
       return null;
     }
   }
+  export async function deleteActivity(activityId) {
+    try {
+      const { data, error } = await supabase
+        .from("Activities")
+        .delete()
+        .match({ id: activityId });
+  
+      if (error) {
+        throw error;
+      }
+  
+      console.log("Deleted data:", data);
+      return data;
+    } catch (error) {
+      console.error("Error deleting activity:", error);
+      return null;
+    }
+  }

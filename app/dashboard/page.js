@@ -1,6 +1,10 @@
 import { getTotalRows, getUserDataByEmail } from "../_Backend/Actions";
-import { getTotalRowsForEmail,getTotalCaloriesForEmail } from "../_Backend/Activities";
+import {
+  getTotalRowsForEmail,
+  getTotalCaloriesForEmail,
+} from "../_Backend/Activities";
 import { auth } from "../_lib/auth";
+import Link from "next/link";
 
 //export const revalidate=0;
 
@@ -9,9 +13,9 @@ async function page() {
   const email = session.user.email;
   const TotalUsers = await getTotalRows();
   const userData = await getUserDataByEmail(email);
-  const TotalWorkouts=await getTotalRowsForEmail(email)
-  const TotalCalories=await getTotalCaloriesForEmail(email)
-  
+  const TotalWorkouts = await getTotalRowsForEmail(email);
+  const TotalCalories = await getTotalCaloriesForEmail(email);
+
   return (
     <>
       <div className="h-screen bg-gray-100">
@@ -62,25 +66,30 @@ async function page() {
                 {/* Existing Actionable Cards */}
                 <div className="bg-white p-6 shadow rounded-lg">
                   <h2 className="text-2xl font-bold text-gray-900">
-                    Start Your Workout
+                    Add a Workout
                   </h2>
                   <p className="mt-4 text-gray-600">
                     Customize your daily workout routines.
                   </p>
-                  <button className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    Start Now
-                  </button>
+                  <Link href="dashboard/activity">
+                    <button className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                      Start Now
+                    </button>
+                  </Link>
                 </div>
+               
                 <div className="bg-white p-6 shadow rounded-lg">
                   <h2 className="text-2xl font-bold text-gray-900">
-                    Nutrition Plans
+                    Community Feedback
                   </h2>
                   <p className="mt-4 text-gray-600">
-                    Track your diet and calories intake.
+                    See what our community has to say about us!
                   </p>
+                  <Link href="dashboard/community">
                   <button className="mt-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-                    View Plans
+                    View Testimonials
                   </button>
+                  </Link>
                 </div>
 
                 {/* New Elements */}
@@ -91,9 +100,11 @@ async function page() {
                   <p className="mt-4 text-gray-600">
                     Review your past workout sessions and achievements.
                   </p>
-                  <button className="mt-4 bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
-                    Explore
-                  </button>
+                  <Link href="dashboard/workouts">
+                    <button className="mt-4 bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
+                      Explore
+                    </button>
+                  </Link>
                 </div>
                 <div className="bg-white p-6 shadow rounded-lg">
                   <h2 className="text-2xl font-bold text-gray-900">
