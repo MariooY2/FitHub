@@ -10,6 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth/supabase-adapter": "^1.4.1",
     "@reduxjs/toolkit": "^2.2.5",
     "@supabase/supabase-js": "^2.43.5",
     "chart.js": "^4.4.3",

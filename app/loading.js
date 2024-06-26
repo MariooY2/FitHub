@@ -1,10 +1,12 @@
-export default function loading() {
+function loading() {
   return (
-    <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-white bg-opacity-75 z-50">
-      <div
-        className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
-        role="status"
-      ></div>
+    <div className="flex space-x-2 justify-center items-center bg-white h-screen dark:invert">
+      <span className="sr-only">Loading...</span>
+      <div className="h-8 w-8 bg-black rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+      <div className="h-8 w-8 bg-black rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+      <div className="h-8 w-8 bg-black rounded-full animate-bounce"></div>
     </div>
   );
 }
+
+export default loading;

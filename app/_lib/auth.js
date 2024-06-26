@@ -1,6 +1,6 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-
+import { SupabaseAdapter } from "@auth/supabase-adapter"
 const authConfig = {
   providers: [
     GoogleProvider({
@@ -9,6 +9,10 @@ const authConfig = {
      
     }),
   ],
+ /* adapter: SupabaseAdapter({
+    url: process.env.NEXT_PUBLIC_SUPABASE_URL,
+    secret: process.env.NEXT_PUBLIC_SUPABASE_KEY,
+  }),*/
   callbacks: {
     authorized({ auth, request }) {
       return !!auth?.user;

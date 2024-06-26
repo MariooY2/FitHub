@@ -8,6 +8,17 @@ import Link from "next/link";
 
 //export const revalidate=0;
 
+function StatCard({ title, value }) {
+  return (
+    <div className="bg-white overflow-hidden shadow rounded-lg">
+      <div className="px-4 py-5 sm:p-6">
+        <dt className="text-sm font-medium text-gray-500 truncate">{title}</dt>
+        <dd className="mt-1 text-3xl font-semibold text-gray-900">{value}</dd>
+      </div>
+    </div>
+  );
+}
+
 async function page() {
   const session = await auth();
   const email = session.user.email;
@@ -31,36 +42,9 @@ async function page() {
             <div className="px-4 py-6 sm:px-0">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {/* Stats Card */}
-                <div className="bg-white overflow-hidden shadow rounded-lg">
-                  <div className="px-4 py-5 sm:p-6">
-                    <dt className="text-sm font-medium text-gray-500 truncate">
-                      Total Workouts
-                    </dt>
-                    <dd className="mt-1 text-3xl font-semibold text-gray-900">
-                      {TotalWorkouts}
-                    </dd>
-                  </div>
-                </div>
-                <div className="bg-white overflow-hidden shadow rounded-lg">
-                  <div className="px-4 py-5 sm:p-6">
-                    <dt className="text-sm font-medium text-gray-500 truncate">
-                      Calories Burned
-                    </dt>
-                    <dd className="mt-1 text-3xl font-semibold text-gray-900">
-                      {TotalCalories}
-                    </dd>
-                  </div>
-                </div>
-                <div className="bg-white overflow-hidden shadow rounded-lg">
-                  <div className="px-4 py-5 sm:p-6">
-                    <dt className="text-sm font-medium text-gray-500 truncate">
-                      Total Users
-                    </dt>
-                    <dd className="mt-1 text-3xl font-semibold text-gray-900">
-                      {TotalUsers}
-                    </dd>
-                  </div>
-                </div>
+                <StatCard title="Total Workouts" value={TotalWorkouts} />
+                <StatCard title="Calories Burned" value={TotalCalories} />
+                <StatCard title=" Total Users" value={TotalUsers} />
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
                 {/* Existing Actionable Cards */}
@@ -77,7 +61,7 @@ async function page() {
                     </button>
                   </Link>
                 </div>
-               
+
                 <div className="bg-white p-6 shadow rounded-lg">
                   <h2 className="text-2xl font-bold text-gray-900">
                     Community Feedback
@@ -86,9 +70,9 @@ async function page() {
                     See what our community has to say about us!
                   </p>
                   <Link href="dashboard/community">
-                  <button className="mt-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-                    View Testimonials
-                  </button>
+                    <button className="mt-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                      View Testimonials
+                    </button>
                   </Link>
                 </div>
 
@@ -113,9 +97,11 @@ async function page() {
                   <p className="mt-4 text-gray-600">
                     Monitor your progress and set new goals.
                   </p>
+                  <Link href="dashboard/progress">
                   <button className="mt-4 bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
                     Track Now
                   </button>
+                  </Link>
                 </div>
               </div>
             </div>
