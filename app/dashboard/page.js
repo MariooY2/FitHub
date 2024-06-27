@@ -10,8 +10,8 @@ import Link from "next/link";
 
 function StatCard({ title, value }) {
   return (
-    <div className="bg-white overflow-hidden shadow rounded-lg">
-      <div className="px-4 py-5 sm:p-6">
+    <div className="bg-white overflow-hidden shadow rounded-lg ">
+      <div className="px-3 py-5 sm:p-6">
         <dt className="text-sm font-medium text-gray-500 truncate">{title}</dt>
         <dd className="mt-1 text-3xl font-semibold text-gray-900">{value}</dd>
       </div>
@@ -32,8 +32,8 @@ async function page() {
       <div className="h-screen bg-gray-100">
         <header className="bg-white shadow">
           <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <h1 className="text-3xl font-bold text-gray-900">
-              Welcome Back to FitHub
+            <h1 className="sm:text-3xl lg:text-5xl text-xl font-bold text-gray-900">
+              Welcome Back to FitHub!
             </h1>
           </div>
         </header>

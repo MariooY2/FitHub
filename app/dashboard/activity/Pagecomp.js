@@ -10,9 +10,11 @@ function page({ email }) {
   const [activity, setActivity] = useState("");
   const [duration, setDuration] = useState("");
   const [caloriesBurned, setCaloriesBurned] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false); // Loading state
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsSubmitting(true); // Disable the button and show loading state
     insertActivity(email, activity, duration, caloriesBurned)
       .then((data) => {
         console.log("Inserted data:", data);
@@ -23,18 +25,22 @@ function page({ email }) {
       })
       .catch((error) => {
         console.error("Error inserting data:", error);
+      })
+      .finally(() => {
+        setIsSubmitting(false); // Re-enable the button after operation
       });
   };
 
+
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
-      <header className="bg-blue-500 text-white text-center p-6 rounded-lg shadow">
-        <h1 className="text-4xl font-bold">Activity Tracker</h1>
+    <div className="h-screen bg-gray-100 ">
+      <header className="bg-blue-500 text-white text-center  shadow w-full py-7">
+        <h1 className="text-xl sm:text-4xl font-bold">Activity Tracker</h1>
       </header>
 
-      <div className="container mx-auto mt-8">
+      <div className="container mx-auto mt-8 p-10">
         <section className="mb-8">
-          <h2 className="text-3xl font-bold mb-4">Add New Activity</h2>
+          <h2 className="sm:text-3xl text-xl font-bold mb-4">Add New Activity</h2>
           <form
             onSubmit={handleSubmit}
             className="bg-white p-6 rounded-lg shadow"
@@ -79,9 +85,10 @@ function page({ email }) {
             </div>
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              disabled={isSubmitting} // Disable button during submission
+              className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
             >
-              Add Activity
+              {isSubmitting ? 'Adding...' : 'Add Activity'}
             </button>
           </form>
         </section>

@@ -1,3 +1,4 @@
+
 import SideBar from "./_components/SideBar";
 
 export const metadata = {
@@ -5,7 +6,8 @@ export const metadata = {
 };
 export const revalidate = 10;
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+
   return (
     <div className="flex min-h-screen overflow-hidden">
       <SideBar />

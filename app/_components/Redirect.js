@@ -1,11 +1,8 @@
-"use client"
-import { useRouter } from 'next/navigation'
- function Redirect(session) {
-    const router = useRouter()
-    if(session?.user){
-        router.push('/dashboard')
-    }
-   
-}
+"use client";
+import { useRouter } from "next/navigation";
 
-export default Redirect
+export function RedirecttoDashboard() {
+  const router = useRouter();
+
+  router.push("/dashboard");
+}
