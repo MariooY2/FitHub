@@ -2,12 +2,10 @@
 
 import { insertActivity } from "../../_Backend/Activities";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
-
-
- function page({email}) {
-    
-   
+function page({ email }) {
+  const router = useRouter();
 
   const [activity, setActivity] = useState("");
   const [duration, setDuration] = useState("");
@@ -18,10 +16,10 @@ import { useState } from "react";
     insertActivity(email, activity, duration, caloriesBurned)
       .then((data) => {
         console.log("Inserted data:", data);
-        // Clear the form
         setActivity("");
         setDuration("");
         setCaloriesBurned("");
+        router.refresh();
       })
       .catch((error) => {
         console.error("Error inserting data:", error);
@@ -60,6 +58,7 @@ import { useState } from "react";
               <input
                 type="number"
                 value={duration}
+                min="0" // Ensure non-negative numbers
                 onChange={(e) => setDuration(e.target.value)}
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 required
@@ -72,6 +71,7 @@ import { useState } from "react";
               <input
                 type="number"
                 value={caloriesBurned}
+                min="0" // Ensure non-negative numbers
                 onChange={(e) => setCaloriesBurned(e.target.value)}
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 required

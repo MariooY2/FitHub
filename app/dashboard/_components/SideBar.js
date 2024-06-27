@@ -13,25 +13,20 @@ async function SideBar() {
   if ((await checkUserExists(email)) === false)
     await insertUserData(email, name, image, 0, 0);
 
-
-
   return (
     <aside className="flex flex-col justify-between items-center h-screen bg-gray-800 text-white p-1">
       <ul>
         <li className="mb-6 ">
           <div className="flex items-center justify-center flex-col mb-10">
             <div className="w-16 h-16 relative overflow-hidden rounded-full mt-7 mb-5 ">
-              {/* Container to apply rounding */}
-              <Link href="/dashboard/profile">
-                {" "}
-                <Image
-                  src={image}
-                  alt="Descriptive Alt Text"
-                  fill
-                  objectFit="cover"
-                  className="rounded-full " // Applying rounded-full here as well for Tailwind
-                />
-              </Link>
+              {/* Container to apply rounding */}{" "}
+              <Image
+                src={image}
+                alt="Descriptive Alt Text"
+                fill
+                objectFit="cover"
+                className="rounded-full " // Applying rounded-full here as well for Tailwind
+              />
             </div>
             <div>{name}</div>
           </div>

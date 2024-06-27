@@ -41,57 +41,62 @@ export async function getTotalRowsForEmail(email) {
   }
 }
 export async function getTotalCaloriesForEmail(email) {
-    try {
-      const { data, error } = await supabase
-        .from("Activities")
-        .select("CaloriesBurned")
-        .eq("email", email);
-  
-      if (error) {
-        throw error;
-      }
-  
-      // Sum up the CaloriesBurned for the given email
-      const totalCalories = data.reduce((total, activity) => total + activity.CaloriesBurned, 0);
-  
-      return totalCalories;
-    } catch (error) {
-      console.error("Error getting total calories burned:", error);
-      return null;
+  try {
+    const { data, error } = await supabase
+      .from("Activities")
+      .select("CaloriesBurned")
+      .eq("email", email);
+
+    if (error) {
+      throw error;
     }
+
+    // Sum up the CaloriesBurned for the given email
+    const totalCalories = data.reduce(
+      (total, activity) => total + activity.CaloriesBurned,
+      0
+    );
+
+    return totalCalories;
+  } catch (error) {
+    console.error("Error getting total calories burned:", error);
+    return null;
   }
-  export async function getActivitiesForEmail(email) {
-    try {
-      const { data, error } = await supabase
-        .from("Activities")
-        .select("*")
-        .eq("email", email);
+}
+export async function getActivitiesForEmail(email) {
   
-      if (error) {
-        throw error;
-      }
   
-      return data;
-    } catch (error) {
-      console.error("Error getting activities:", error);
-      return null;
+  try {
+    const { data, error } = await supabase
+      .from("Activities")
+      .select("*")
+      .eq("email", email);
+      
+    if (error) {
+      throw error;
     }
+   
+    return data;
+  } catch (error) {
+    console.error("Error getting activities:", error);
+    return null;
   }
-  export async function deleteActivity(activityId) {
-    try {
-      const { data, error } = await supabase
-        .from("Activities")
-        .delete()
-        .match({ id: activityId });
-  
-      if (error) {
-        throw error;
-      }
-  
-      console.log("Deleted data:", data);
-      return data;
-    } catch (error) {
-      console.error("Error deleting activity:", error);
-      return null;
+}
+export async function deleteActivity(activityId) {
+ 
+  try {
+    const { data, error } = await supabase
+      .from("Activities")
+      .delete()
+      .match({ id: activityId });
+
+    if (error) {
+      throw error;
     }
+    console.log("Deleted data:", data);
+    return data;
+  } catch (error) {
+    console.error("Error deleting activity:", error);
+    return null;
   }
+}

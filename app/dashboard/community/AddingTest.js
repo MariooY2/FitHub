@@ -1,7 +1,9 @@
 "use client";
 import { addTestimonial } from "@/app/_Backend/Testimonials";
 import { useState } from "react";
+import { useRouter } from "next/navigation"
 function AddingTest({name}) {
+  const router = useRouter();
   const [description, setdescription] = useState(null);
 
   const handleSubmit = async (event) => {
@@ -12,6 +14,7 @@ function AddingTest({name}) {
       console.log("Testimonial added successfully:", result);
       // Optionally clear the form or handle success
       setdescription("");
+      router.refresh();
     } else {
       console.error("Failed to add testimonial");
     }
