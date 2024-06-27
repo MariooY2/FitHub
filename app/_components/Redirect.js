@@ -1,9 +1,10 @@
 import { auth } from "../_lib/auth"
-import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 async function Redirect() {
+    const router = useRouter()
 const session=await auth();
     if(session?.user){
-        redirect("/dashboard")
+        router.push('/dashboard', { scroll: false })
     }
    
 }
