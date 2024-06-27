@@ -1,5 +1,7 @@
 import Link from "next/link";
+import Redirect from "../_components/Redirect";
 function page() {
+  Redirect();
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col justify-center items-center">
       <div className="max-w-md w-full bg-white p-8 border border-gray-300 rounded-lg shadow-lg">

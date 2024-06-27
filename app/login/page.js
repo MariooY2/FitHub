@@ -1,17 +1,18 @@
 import Link from "next/link";
-import Google from "../_components/GoogleSignin"
+import Google from "../_components/GoogleSignin";
+import Redirect from "../_components/Redirect";
+
 function page() {
+  Redirect();
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col justify-center items-center">
       <div className="max-w-md w-full bg-white p-8 border border-gray-300 rounded-lg shadow-lg">
         <div className="flex justify-center">
-          
           <img
             src="/logo.png"
             alt="Logo Image"
             className="mb-4 max-w-xs w-full"
           />
- 
         </div>
 
         <h2 className="text-2xl font-semibold text-center text-gray-800">
@@ -48,18 +49,16 @@ function page() {
           </div>
           <div className="flex flex-col justify-center items-center">
             <button
-            disabled
+              disabled
               type="submit"
               className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >
               Sign in
             </button>
-           
-           
           </div>
         </form>
         <div className="flex items-center justify-center">
-        <Google/>
+          <Google />
         </div>
         <div className="mt-6 text-center">
           <p className="text-sm">
