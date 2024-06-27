@@ -1,7 +1,9 @@
 import Link from "next/link";
 import Redirect from "../_components/Redirect";
-function page() {
-  Redirect();
+import { auth } from "../_lib/auth";
+async function page() {
+  const session=await auth()
+  Redirect(session);
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col justify-center items-center">
       <div className="max-w-md w-full bg-white p-8 border border-gray-300 rounded-lg shadow-lg">
