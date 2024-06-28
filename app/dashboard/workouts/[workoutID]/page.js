@@ -27,7 +27,7 @@ function ErrorMessage() {
 
 export default async function page({ params }) {
   const ID = params.workoutID;
-  console.log(ID);
+  
   const workout = await getWorkoutById(ID);
 
     if(workout===false){
