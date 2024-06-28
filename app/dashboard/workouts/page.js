@@ -60,11 +60,13 @@ function getWorkouts() {
 }
 
 function page() {
-  /*const workouts = getWorkouts();
-  const [isLoading, setIsLoading] = useState(true);
+  const workouts = getWorkouts();
+
+  /*const [isLoading, setIsLoading] = useState(true);
   const handleImageLoad = () => {
     setIsLoading(false);
 };*/
+
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold text-center text-gray-800 mb-10">
