@@ -1,4 +1,3 @@
-
 //import { useState } from "react";
 import { addWorkout } from "../../_Backend/WorkoutHandling";
 import Loader from "@/app/_components/Loader";
@@ -62,11 +61,6 @@ function getWorkouts() {
 function page() {
   const workouts = getWorkouts();
 
-  /*const [isLoading, setIsLoading] = useState(true);
-  const handleImageLoad = () => {
-    setIsLoading(false);
-};*/
-
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold text-center text-gray-800 mb-10">
@@ -78,16 +72,10 @@ function page() {
             key={workout.id}
             className="bg-white rounded-lg shadow overflow-hidden flex flex-col"
           >
-              {isLoading && (
-                <div className="absolute inset-0 flex justify-center items-center bg-gray-100">
-                    <Loader />
-                </div>
-            )}
             <Image
               src={workout.imageUrl}
               alt={workout.name}
-              className={`w-full h-48 object-cover  ${isLoading ? 'hidden' : 'block'}` }
-              onLoad={handleImageLoad}
+              className={`w-full h-48 object-cover`}
               width={400}
               height={200}
             />
