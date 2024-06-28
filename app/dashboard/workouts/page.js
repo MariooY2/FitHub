@@ -86,10 +86,10 @@ function page() {
               <p className="text-gray-600 flex-grow">{workout.description}</p>
             </div>
             <div className="px-5 pb-5">
-              <Link href={workout.detailsLink}>
-                <a className="text-blue-500 border border-blue-500 hover:bg-blue-500 hover:text-white transition-colors duration-300 ml-2 py-2 px-4 rounded w-full text-center">
+              <Link href={workout.detailsLink} className="text-blue-500 border border-blue-500 hover:bg-blue-500 hover:text-white transition-colors duration-300 ml-2 py-2 px-4 rounded w-full text-center">
+
                   View Details
-                </a>
+            
               </Link>
             </div>
           </div>
