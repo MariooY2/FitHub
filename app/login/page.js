@@ -1,11 +1,12 @@
 import Link from "next/link";
 import Google from "../_components/GoogleSignin";
 import {RedirecttoDashboard} from "../_components/Redirect";
-import { auth } from "../_lib/auth";
-async function page() {
+import { signIn } from "../_lib/auth";
 
-  const session = await auth();
 
+ function page() {
+
+ 
 
   return (
     <>
@@ -22,6 +23,11 @@ async function page() {
           <h2 className="text-2xl font-semibold text-center text-gray-800">
             Login
           </h2>
+          <div className="text-center mb-4">
+            <p className="text-red-500">
+              Only login by Google is currently available
+            </p>
+          </div>
           <form className="mt-8 space-y-6" action="#" method="POST">
             <div>
               <label htmlFor="email" className="sr-only">

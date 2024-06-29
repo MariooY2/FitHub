@@ -29,8 +29,8 @@ export default async function HomePage() {
               <Image
                 src="/AI1.jpg"
                 alt="Fitness"
-                layout="fill"
-                objectFit="cover"
+                fill
+                style={{ objectFit: 'cover' }}
                 className="w-full h-full"
               />
             </div>

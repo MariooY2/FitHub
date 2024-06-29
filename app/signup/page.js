@@ -17,6 +17,11 @@ async function page() {
         <h2 className="text-2xl font-semibold text-center text-gray-800">
           Create Account
         </h2>
+        <div className="text-center mb-4">
+            <p className="text-red-500">
+              Only login by Google is currently available
+            </p>
+          </div>
         <form className="mt-8 space-y-6" action="#" method="POST">
           <div>
             <label htmlFor="name" className="sr-only">
